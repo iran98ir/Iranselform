@@ -7,166 +7,184 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Vazirmatn', Tahoma, sans-serif; }
   body {
-    background:#f5f7fa;
+    background:#f0f2f5;
     color:#1a1a1a;
-    line-height:1.7;
+    line-height:1.8;
     padding:16px;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:flex-start;
+    font-size:1.1rem;
   }
   .container {
-    max-width:520px;
+    max-width:540px;
     width:100%;
     background:#fff;
-    border-radius:20px;
-    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    border-radius:24px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.10);
     overflow:hidden;
   }
   .hero {
     background:linear-gradient(135deg,#ffd400 0%,#ffb800 100%);
-    padding:28px 22px 36px;
+    padding:32px 24px 40px;
     text-align:center;
     position:relative;
   }
   .hero::after {
     content:'';
     position:absolute;
-    bottom:-20px; left:0; right:0;
-    height:40px;
+    bottom:-22px; left:0; right:0;
+    height:44px;
     background:#fff;
     border-radius:50% 50% 0 0;
   }
   .hero h1 {
-    font-size:1.5rem;
+    font-size:1.9rem;
     font-weight:800;
     color:#1a1a1a;
-    margin-bottom:8px;
+    margin-bottom:10px;
+    line-height:1.4;
   }
   .hero p {
-    font-size:0.9rem;
-    color:#333;
-    font-weight:500;
+    font-size:1.05rem;
+    color:#2b2b2b;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .hero p svg {
+    width:22px;
+    height:22px;
+    flex-shrink:0;
+    vertical-align:middle;
   }
   .badge {
     display:inline-block;
     background:#1a1a1a;
     color:#ffd400;
-    padding:6px 14px;
+    padding:7px 18px;
     border-radius:50px;
-    font-size:0.75rem;
-    font-weight:700;
-    margin-bottom:12px;
+    font-size:0.9rem;
+    font-weight:800;
+    margin-bottom:14px;
   }
-  .content { padding:24px 22px 28px; position:relative; z-index:2; }
+  .content { padding:26px 24px 32px; position:relative; z-index:2; }
   .notice {
     background:#fff8e1;
-    border-right:4px solid #ffd400;
-    padding:12px 14px;
-    border-radius:10px;
-    font-size:0.85rem;
+    border-right:5px solid #ffd400;
+    padding:14px 16px;
+    border-radius:12px;
+    font-size:0.95rem;
     color:#5c4500;
-    margin-bottom:20px;
+    margin-bottom:24px;
     display:flex;
-    gap:8px;
+    gap:10px;
     align-items:flex-start;
+    font-weight:600;
   }
-  .notice span { font-size:1.1rem; }
-  .field { margin-bottom:16px; }
+  .notice span { font-size:1.3rem; }
+  .field { margin-bottom:20px; }
   .field label {
     display:block;
-    font-size:0.85rem;
-    font-weight:700;
-    color:#333;
-    margin-bottom:6px;
+    font-size:1.05rem;
+    font-weight:800;
+    color:#1f2937;
+    margin-bottom:8px;
   }
   .field input[type="text"],
   .field input[type="tel"] {
     width:100%;
-    padding:12px 14px;
-    border:2px solid #e5e7eb;
-    border-radius:12px;
-    font-size:0.95rem;
+    padding:14px 16px;
+    border:2.5px solid #d1d5db;
+    border-radius:14px;
+    font-size:1.1rem;
     transition:all 0.2s;
-    background:#fafafa;
+    background:#f9fafb;
     font-family:inherit;
+    font-weight:500;
   }
   .field input:focus {
     outline:none;
-    border-color:#ffd400;
+    border-color:#ffb800;
     background:#fff;
-    box-shadow:0 0 0 4px rgba(255,212,0,0.15);
+    box-shadow:0 0 0 5px rgba(255,184,0,0.20);
   }
   .radio-group {
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:10px;
   }
   .radio-card {
     display:flex;
     align-items:center;
-    gap:10px;
-    padding:12px 14px;
-    border:2px solid #e5e7eb;
-    border-radius:12px;
+    gap:12px;
+    padding:14px 16px;
+    border:2.5px solid #d1d5db;
+    border-radius:14px;
     cursor:pointer;
     transition:all 0.2s;
-    background:#fafafa;
-    font-size:0.9rem;
-    font-weight:600;
+    background:#f9fafb;
+    font-size:1.05rem;
+    font-weight:700;
   }
   .radio-card:hover { border-color:#ffd400; background:#fff; }
   .radio-card input[type="radio"] {
     accent-color:#ffb800;
-    width:18px;
-    height:18px;
+    width:22px;
+    height:22px;
     cursor:pointer;
+    flex-shrink:0;
   }
   .radio-card.selected {
     border-color:#ffb800;
     background:#fff8e1;
+    border-width:3px;
   }
   .upload-area {
-    margin-top:10px;
+    margin-top:12px;
     display:flex;
-    gap:10px;
+    gap:12px;
     flex-wrap:wrap;
   }
   .upload-box {
-    flex:1 1 140px;
-    min-height:110px;
-    border:2px dashed #d1d5db;
-    border-radius:14px;
+    flex:1 1 150px;
+    min-height:120px;
+    border:2.5px dashed #9ca3af;
+    border-radius:16px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     cursor:pointer;
     transition:all 0.2s;
-    background:#fafafa;
-    padding:12px;
+    background:#f9fafb;
+    padding:14px;
     text-align:center;
     position:relative;
     overflow:hidden;
   }
   .upload-box:hover { border-color:#ffb800; background:#fff8e1; }
-  .upload-box.filled { border-color:#22c55e; border-style:solid; background:#f0fdf4; }
+  .upload-box.filled { border-color:#22c55e; border-style:solid; background:#f0fdf4; border-width:2.5px; }
   .upload-box .icon {
-    font-size:1.6rem;
-    color:#9ca3af;
-    margin-bottom:6px;
+    font-size:1.8rem;
+    color:#6b7280;
+    margin-bottom:8px;
   }
   .upload-box.filled .icon { color:#22c55e; }
   .upload-box .label {
-    font-size:0.75rem;
-    font-weight:700;
-    color:#4b5563;
+    font-size:0.9rem;
+    font-weight:800;
+    color:#374151;
   }
   .upload-box .sub {
-    font-size:0.68rem;
-    color:#9ca3af;
-    margin-top:2px;
+    font-size:0.8rem;
+    color:#6b7280;
+    margin-top:4px;
+    font-weight:500;
   }
   .upload-box img.preview {
     position:absolute;
@@ -174,50 +192,75 @@
     width:100%;
     height:100%;
     object-fit:cover;
-    border-radius:12px;
+    border-radius:14px;
   }
   .upload-box input[type="file"] { display:none; }
   .upload-hint {
-    font-size:0.75rem;
+    font-size:0.9rem;
     color:#92400e;
     background:#fef3c7;
-    padding:8px 12px;
-    border-radius:8px;
-    margin-top:8px;
+    padding:12px 14px;
+    border-radius:10px;
+    margin-top:10px;
     display:flex;
-    gap:6px;
+    gap:8px;
     align-items:flex-start;
-    line-height:1.5;
+    line-height:1.6;
+    font-weight:600;
+    border:1.5px solid #fcd34d;
   }
   .submit-btn {
     width:100%;
-    padding:15px;
+    padding:17px;
     background:linear-gradient(135deg,#ffd400,#ffb800);
-    border:none;
-    border-radius:14px;
-    font-size:1rem;
+    border:2.5px solid #e5a700;
+    border-radius:16px;
+    font-size:1.15rem;
     font-weight:800;
     color:#1a1a1a;
     cursor:pointer;
-    margin-top:10px;
+    margin-top:12px;
     transition:all 0.2s;
     font-family:inherit;
-    box-shadow:0 4px 14px rgba(255,184,0,0.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    box-shadow:0 6px 20px rgba(255,184,0,0.40);
   }
-  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,184,0,0.5); }
+  .submit-btn svg {
+    width:26px;
+    height:26px;
+    flex-shrink:0;
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,184,0,0.55); }
   .submit-btn:active { transform:translateY(0); }
   .convert-note {
     text-align:center;
-    font-size:0.75rem;
-    color:#6b7280;
-    margin-top:12px;
-    line-height:1.6;
+    font-size:0.95rem;
+    color:#4b5563;
+    margin-top:16px;
+    line-height:1.7;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    flex-wrap:wrap;
   }
-  .convert-note strong { color:#1a1a1a; }
+  .convert-note svg {
+    width:20px;
+    height:20px;
+    flex-shrink:0;
+    vertical-align:middle;
+  }
+  .convert-note strong { color:#1a1a1a; font-weight:800; }
   .hidden { display:none !important; }
   @media(max-width:420px){
-    .hero h1 { font-size:1.25rem; }
-    .content { padding:20px 16px 24px; }
+    body { font-size:1.05rem; padding:12px; }
+    .hero h1 { font-size:1.6rem; }
+    .content { padding:22px 18px 28px; }
+    .hero { padding:26px 18px 34px; }
   }
 </style>
 </head>
@@ -226,7 +269,11 @@
   <div class="hero">
     <div class="badge">🎁 رایگان</div>
     <h1>سیم‌کارت رایگانت را بگیر</h1>
-    <p>فرم شما به یک پیام آماده در واتساپ تبدیل می‌شود</p>
+    <p>
+      فرم شما به یک پیام آماده در
+      <svg viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      تبدیل می‌شود
+    </p>
   </div>
 
   <div class="content">
@@ -310,11 +357,14 @@
       </div>
 
       <button type="button" class="submit-btn" onclick="submitForm()">
+        <svg viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         ادامه و دریافت سیم‌کارت
       </button>
 
       <div class="convert-note">
-        پس از تکمیل، اطلاعات شما به یک <strong>پیام آماده در واتساپ</strong> تبدیل می‌شود تا سریع‌تر ارسال شود.
+        پس از تکمیل، اطلاعات شما به یک
+        <svg viewBox="0 0 24 24" fill="#4b5563" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        تبدیل می‌شود تا سریع‌تر ارسال شود.
       </div>
     </form>
   </div>
@@ -429,4 +479,4 @@ ${uploadStatus}
 }
 </script>
 </body>
-               </html>
+ </html>
