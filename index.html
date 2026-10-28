@@ -136,16 +136,15 @@
   }
   .radio-card {
     display:flex;
-    flex-direction:row-reverse;
-    justify-content:space-between;
     align-items:center;
-    gap:14px;
+    justify-content:space-between;
     padding:16px 18px;
     border:2.5px solid #d1d5db;
     border-radius:14px;
     cursor:pointer;
     transition:all 0.2s;
     background:#f9fafb;
+    direction:rtl;
   }
   .radio-card:hover { border-color:#ffd400; background:#fff; }
   .radio-card input[type="radio"] {
@@ -161,6 +160,7 @@
     position:relative;
     margin:0;
     transition:all 0.2s;
+    order:2;
   }
   .radio-card input[type="radio"]:checked { border-color:#ffb800; }
   .radio-card input[type="radio"]:checked::after {
@@ -176,6 +176,7 @@
     font-size:1.6rem;
     font-weight:800;
     line-height:1;
+    order:1;
   }
   .radio-card.selected {
     border-color:#ffb800;
@@ -185,10 +186,8 @@
 
   .checkbox-card {
     display:flex;
-    flex-direction:row-reverse;
-    justify-content:space-between;
     align-items:center;
-    gap:18px;
+    justify-content:space-between;
     padding:18px;
     border:2.5px solid #d1d5db;
     border-radius:14px;
@@ -198,6 +197,7 @@
     font-size:1.1rem;
     font-weight:700;
     line-height:1.7;
+    direction:rtl;
   }
   .checkbox-card:hover { border-color:#ffd400; background:#fff; }
   .checkbox-card input[type="checkbox"] {
@@ -213,6 +213,7 @@
     position:relative;
     margin:0;
     transition:all 0.2s;
+    order:2;
   }
   .checkbox-card input[type="checkbox"]:checked {
     border-color:#ffb800;
@@ -233,6 +234,7 @@
     background:#fff8e1;
     border-width:3px;
   }
+  .checkbox-card span { order:1; }
 
   .submit-btn {
     width:100%;
