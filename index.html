@@ -136,9 +136,11 @@
   }
   .radio-card {
     display:flex;
+    flex-direction:row-reverse;
+    justify-content:space-between;
     align-items:center;
     gap:14px;
-    padding:14px 16px;
+    padding:16px 18px;
     border:2.5px solid #d1d5db;
     border-radius:14px;
     cursor:pointer;
@@ -149,8 +151,8 @@
   .radio-card input[type="radio"] {
     appearance:none;
     -webkit-appearance:none;
-    width:24px;
-    height:24px;
+    width:26px;
+    height:26px;
     border:2.5px solid #9ca3af;
     border-radius:50%;
     background:#fff;
@@ -166,7 +168,7 @@
     position:absolute;
     top:50%; left:50%;
     transform:translate(-50%,-50%);
-    width:12px; height:12px;
+    width:13px; height:13px;
     border-radius:50%;
     background:#ffb800;
   }
@@ -183,6 +185,8 @@
 
   .checkbox-card {
     display:flex;
+    flex-direction:row-reverse;
+    justify-content:space-between;
     align-items:center;
     gap:18px;
     padding:18px;
@@ -194,14 +198,13 @@
     font-size:1.1rem;
     font-weight:700;
     line-height:1.7;
-    margin-top:24px;
   }
   .checkbox-card:hover { border-color:#ffd400; background:#fff; }
   .checkbox-card input[type="checkbox"] {
     appearance:none;
     -webkit-appearance:none;
-    width:26px;
-    height:26px;
+    width:28px;
+    height:28px;
     border:2.5px solid #9ca3af;
     border-radius:8px;
     background:#fff;
@@ -221,7 +224,7 @@
     top:50%; left:50%;
     transform:translate(-50%,-50%);
     color:#1a1a1a;
-    font-size:18px;
+    font-size:20px;
     font-weight:900;
     line-height:1;
   }
@@ -241,7 +244,7 @@
     font-weight:800;
     color:#1a1a1a;
     cursor:pointer;
-    margin-top:24px;
+    margin-top:8px;
     transition:all 0.2s;
     font-family:inherit;
     display:flex;
@@ -276,8 +279,8 @@
     .content { padding:22px 18px 28px; }
     .hero { padding:26px 18px 34px; }
     .radio-card span { font-size:1.5rem; }
-    .radio-card { gap:12px; padding:12px 14px; }
-    .checkbox-card { font-size:1.05rem; gap:16px; }
+    .radio-card { padding:14px 16px; }
+    .checkbox-card { font-size:1.05rem; }
   }
 </style>
 </head>
@@ -356,7 +359,7 @@
         </div>
       </div>
 
-      <div class="field" style="margin-top:24px;">
+      <div class="field">
         <label class="checkbox-card" id="termsCard">
           <input type="checkbox" id="termsCheckbox" onchange="toggleTerms(this)">
           <span>کلیه شرایط و قوانین ایرانسل را قبول دارم</span>
@@ -471,4 +474,4 @@ ${divider}
 }
 </script>
 </body>
-     </html>
+ </html>
