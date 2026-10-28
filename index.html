@@ -24,53 +24,38 @@ body {
   margin: 0 auto;
   background: #fff;
   border-radius: 24px;
-  padding: 24px;
+  padding: 0;
   box-shadow: 0 8px 35px #00000012;
   overflow: hidden;
 }
 
 .hero {
-  background: linear-gradient(135deg, #ffd500 0%, #ffc400 60%, #ffb800 100%);
-  border-radius: 22px;
-  padding: 44px 28px 40px;
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, #ffd400 0%, #ffb800 100%);
+  padding: 36px 26px 44px;
   text-align: center;
   position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  background: rgba(255,255,255,0.18);
-  border-radius: 50%;
-  top: -90px;
-  right: -70px;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  width: 160px;
-  height: 160px;
-  background: rgba(255,255,255,0.14);
-  border-radius: 50%;
-  bottom: -70px;
-  left: -50px;
+  bottom: -22px;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: #fff;
+  border-radius: 50% 50% 0 0;
 }
 
 .badge {
   display: inline-block;
   background: #1a1a1a;
-  color: #ffd500;
+  color: #ffd400;
   padding: 8px 20px;
   border-radius: 50px;
   font-size: 15px;
   font-weight: bold;
-  letter-spacing: 0.5px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   position: relative;
   z-index: 2;
 }
@@ -85,10 +70,10 @@ body {
   z-index: 2;
 }
 
-.hero .subtitle {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #333;
+.hero p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: #2b2b2b;
   font-weight: bold;
   margin: 0;
   position: relative;
@@ -101,19 +86,34 @@ body {
 }
 
 .whatsapp-icon {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   vertical-align: middle;
 }
 
-.intro-text {
-  text-align: center;
-  font-size: 18px;
+.content {
+  padding: 30px 24px 32px;
+}
+
+.notice {
+  background: #fff8e1;
+  border-right: 5px solid #ffd400;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 17px;
   line-height: 1.9;
-  color: #555;
-  margin: 0 0 26px;
-  padding: 0 10px;
+  color: #5c4500;
+  margin-bottom: 26px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.notice span {
+  font-size: 22px;
+  flex-shrink: 0;
 }
 
 .field {
@@ -249,24 +249,20 @@ button:active {
     padding: 12px;
   }
 
-  .container {
-    padding: 17px;
+  .content {
+    padding: 26px 18px 28px;
   }
 
   .hero {
-    padding: 32px 20px 30px;
+    padding: 30px 20px 38px;
   }
 
   .hero h1 {
     font-size: 26px;
   }
 
-  .hero .subtitle {
-    font-size: 16px;
-  }
-
-  .intro-text {
-    font-size: 16px;
+  .hero p {
+    font-size: 17px;
   }
 
   .prefix-option {
@@ -283,86 +279,90 @@ button:active {
   <div class="hero">
     <div class="badge">🎁 رایگان</div>
     <h1>سیم‌کارت رایگانت را بگیر</h1>
-    <p class="subtitle">
+    <p>
       <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-label="واتساپ" role="img">
         <path fill="#1a1a1a" d="M16 .8A15.1 15.1 0 0 0 3.1 23.7L1 31l7.5-2A15.2 15.2 0 1 0 16 .8z"/>
-        <path fill="#ffd500" d="M16 4.2a11.7 11.7 0 0 0-10 17.8l.3.5-1.2 4.3 4.4-1.2.4.3A11.7 11.7 0 1 0 16 4.2zm6.5 16.7c-.3.8-1.7 1.5-2.4 1.6-.7.1-1.5.2-2.4-.1-.6-.2-1.3-.4-2.2-.8-3.9-1.7-6.4-5.7-6.6-6-.2-.3-1.6-2.1-1.6-4s1-2.8 1.4-3.2c.3-.4.8-.5 1-.5h.7c.2 0 .5-.1.8.6l1.1 2.7c.1.2.1.5 0 .7l-.4.6-.6.7c-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.8 1.8.4.2.6.2.8-.1l1.1-1.3c.3-.4.5-.3.9-.2l2.6 1.2c.4.2.7.3.8.5.1.2.1 1-.2 1.8z"/>
+        <path fill="#ffd400" d="M16 4.2a11.7 11.7 0 0 0-10 17.8l.3.5-1.2 4.3 4.4-1.2.4.3A11.7 11.7 0 1 0 16 4.2zm6.5 16.7c-.3.8-1.7 1.5-2.4 1.6-.7.1-1.5.2-2.4-.1-.6-.2-1.3-.4-2.2-.8-3.9-1.7-6.4-5.7-6.6-6-.2-.3-1.6-2.1-1.6-4s1-2.8 1.4-3.2c.3-.4.8-.5 1-.5h.7c.2 0 .5-.1.8.6l1.1 2.7c.1.2.1.5 0 .7l-.4.6-.6.7c-.2.2-.4.4-.2.8.2.4.9 1.5 1.9 2.4 1.3 1.2 2.4 1.6 2.8 1.8.4.2.6.2.8-.1l1.1-1.3c.3-.4.5-.3.9-.2l2.6 1.2c.4.2.7.3.8.5.1.2.1 1-.2 1.8z"/>
       </svg>
       فرم شما به واتساب ارسال خواهد شد
     </p>
   </div>
 
-  <p class="intro-text">
-    لطفاً فرم را با دقت و کامل پر کنید تا سیم‌کارت شما بدون معطلی ارسال شود.
-  </p>
+  <div class="content">
 
-  <form id="requestForm">
-
-    <div class="field">
-      <label for="firstName">نام</label>
-      <input id="firstName" name="firstName" type="text" placeholder="نام خود را وارد کنید" required>
+    <div class="notice">
+      <span>✍️</span>
+      <div>لطفاً فرم را با دقت و کامل پر کنید تا سیم‌کارت شما بدون معطلی ارسال شود.</div>
     </div>
 
-    <div class="field">
-      <label for="lastName">نام خانوادگی</label>
-      <input id="lastName" name="lastName" type="text" placeholder="نام خانوادگی خود را وارد کنید" required>
-    </div>
+    <form id="requestForm">
 
-    <div class="field">
-      <label for="nationalCode">کد ملی</label>
-      <input id="nationalCode" name="nationalCode" type="text" inputmode="numeric" maxlength="10" placeholder="کد ملی ۱۰ رقمی" required>
-    </div>
-
-    <div class="field">
-      <label for="phone">شماره تماس</label>
-      <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="شماره تلفن همراه" required>
-    </div>
-
-    <div class="field">
-      <div class="address-reminder">
-        📍 لطفاً آدرس خود را با دقت و به‌صورت کامل وارد کنید؛ سیم‌کارت به همین آدرس ارسال خواهد شد.
+      <div class="field">
+        <label for="firstName">نام</label>
+        <input id="firstName" name="firstName" type="text" placeholder="نام خود را وارد کنید" required>
       </div>
-      <label for="address">آدرس دقیق</label>
-      <input id="address" name="address" type="text" placeholder="استان، شهر، خیابان، کوچه و پلاک" required>
-    </div>
 
-    <div class="field">
-      <label for="postalCode">کد پستی</label>
-      <input id="postalCode" name="postalCode" type="text" inputmode="numeric" maxlength="10" placeholder="کد پستی ۱۰ رقمی" required>
-    </div>
-
-    <div class="field">
-      <div class="prefix-title">پیش‌شماره موردنظر را انتخاب کنید</div>
-      <div class="prefix-grid">
-        <label class="prefix-option">
-          <span>0900</span>
-          <input type="radio" name="prefix" value="0900" required>
-        </label>
-
-        <label class="prefix-option">
-          <span>0903</span>
-          <input type="radio" name="prefix" value="0903">
-        </label>
-
-        <label class="prefix-option">
-          <span>0936</span>
-          <input type="radio" name="prefix" value="0936">
-        </label>
-
-        <label class="prefix-option">
-          <span>0930</span>
-          <input type="radio" name="prefix" value="0930">
-        </label>
+      <div class="field">
+        <label for="lastName">نام خانوادگی</label>
+        <input id="lastName" name="lastName" type="text" placeholder="نام خانوادگی خود را وارد کنید" required>
       </div>
-    </div>
 
-    <label class="terms">
-      <input type="checkbox" id="terms" required>
-      <span>اینجانب صحت اطلاعات واردشده را تأیید می‌کنم و شرایط و قوانین اعلام‌شده را پذیرفته‌ام.</span>
-    </label>
+      <div class="field">
+        <label for="nationalCode">کد ملی</label>
+        <input id="nationalCode" name="nationalCode" type="text" inputmode="numeric" maxlength="10" placeholder="کد ملی ۱۰ رقمی" required>
+      </div>
 
-    <button type="submit">ادامه و ارسال در واتساپ</button>
-  </form>
+      <div class="field">
+        <label for="phone">شماره تماس</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="شماره تلفن همراه" required>
+      </div>
+
+      <div class="field">
+        <div class="address-reminder">
+          📍 لطفاً آدرس خود را با دقت و به‌صورت کامل وارد کنید؛ سیم‌کارت به همین آدرس ارسال خواهد شد.
+        </div>
+        <label for="address">آدرس دقیق</label>
+        <input id="address" name="address" type="text" placeholder="استان، شهر، خیابان، کوچه و پلاک" required>
+      </div>
+
+      <div class="field">
+        <label for="postalCode">کد پستی</label>
+        <input id="postalCode" name="postalCode" type="text" inputmode="numeric" maxlength="10" placeholder="کد پستی ۱۰ رقمی" required>
+      </div>
+
+      <div class="field">
+        <div class="prefix-title">پیش‌شماره موردنظر را انتخاب کنید</div>
+        <div class="prefix-grid">
+          <label class="prefix-option">
+            <span>0900</span>
+            <input type="radio" name="prefix" value="0900" required>
+          </label>
+
+          <label class="prefix-option">
+            <span>0903</span>
+            <input type="radio" name="prefix" value="0903">
+          </label>
+
+          <label class="prefix-option">
+            <span>0936</span>
+            <input type="radio" name="prefix" value="0936">
+          </label>
+
+          <label class="prefix-option">
+            <span>0930</span>
+            <input type="radio" name="prefix" value="0930">
+          </label>
+        </div>
+      </div>
+
+      <label class="terms">
+        <input type="checkbox" id="terms" required>
+        <span>اینجانب صحت اطلاعات واردشده را تأیید می‌کنم و شرایط و قوانین اعلام‌شده را پذیرفته‌ام.</span>
+      </label>
+
+      <button type="submit">ادامه و ارسال در واتساپ</button>
+    </form>
+  </div>
 </main>
 
 <script>
@@ -427,4 +427,4 @@ document.getElementById("requestForm").addEventListener("submit", function(event
 </script>
 
 </body>
-  </html>
+</html>
