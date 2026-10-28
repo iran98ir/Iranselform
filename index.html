@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سیم‌کارت رایگان</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Vazirmatn', Tahoma, sans-serif; }
+  body {
+    background:#f5f7fa;
+    color:#1a1a1a;
+    line-height:1.7;
+    padding:16px;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+  }
+  .container {
+    max-width:520px;
+    width:100%;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.08);
+    overflow:hidden;
+  }
+  .hero {
+    background:linear-gradient(135deg,#ffd400 0%,#ffb800 100%);
+    padding:28px 22px 36px;
+    text-align:center;
+    position:relative;
+  }
+  .hero::after {
+    content:'';
+    position:absolute;
+    bottom:-20px; left:0; right:0;
+    height:40px;
+    background:#fff;
+    border-radius:50% 50% 0 0;
+  }
+  .hero h1 {
+    font-size:1.5rem;
+    font-weight:800;
+    color:#1a1a1a;
+    margin-bottom:8px;
+  }
+  .hero p {
+    font-size:0.9rem;
+    color:#333;
+    font-weight:500;
+  }
+  .badge {
+    display:inline-block;
+    background:#1a1a1a;
+    color:#ffd400;
+    padding:6px 14px;
+    border-radius:50px;
+    font-size:0.75rem;
+    font-weight:700;
+    margin-bottom:12px;
+  }
+  .content { padding:24px 22px 28px; position:relative; z-index:2; }
+  .notice {
+    background:#fff8e1;
+    border-right:4px solid #ffd400;
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:0.85rem;
+    color:#5c4500;
+    margin-bottom:20px;
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .notice span { font-size:1.1rem; }
+  .field { margin-bottom:16px; }
+  .field label {
+    display:block;
+    font-size:0.85rem;
+    font-weight:700;
+    color:#333;
+    margin-bottom:6px;
+  }
+  .field input[type="text"],
+  .field input[type="tel"] {
+    width:100%;
+    padding:12px 14px;
+    border:2px solid #e5e7eb;
+    border-radius:12px;
+    font-size:0.95rem;
+    transition:all 0.2s;
+    background:#fafafa;
+    font-family:inherit;
+  }
+  .field input:focus {
+    outline:none;
+    border-color:#ffd400;
+    background:#fff;
+    box-shadow:0 0 0 4px rgba(255,212,0,0.15);
+  }
+  .radio-group {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .radio-card {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+    border:2px solid #e5e7eb;
+    border-radius:12px;
+    cursor:pointer;
+    transition:all 0.2s;
+    background:#fafafa;
+    font-size:0.9rem;
+    font-weight:600;
+  }
+  .radio-card:hover { border-color:#ffd400; background:#fff; }
+  .radio-card input[type="radio"] {
+    accent-color:#ffb800;
+    width:18px;
+    height:18px;
+    cursor:pointer;
+  }
+  .radio-card.selected {
+    border-color:#ffb800;
+    background:#fff8e1;
+  }
+  .upload-area {
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .upload-box {
+    flex:1 1 140px;
+    min-height:110px;
+    border:2px dashed #d1d5db;
+    border-radius:14px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:all 0.2s;
+    background:#fafafa;
+    padding:12px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .upload-box:hover { border-color:#ffb800; background:#fff8e1; }
+  .upload-box.filled { border-color:#22c55e; border-style:solid; background:#f0fdf4; }
+  .upload-box .icon {
+    font-size:1.6rem;
+    color:#9ca3af;
+    margin-bottom:6px;
+  }
+  .upload-box.filled .icon { color:#22c55e; }
+  .upload-box .label {
+    font-size:0.75rem;
+    font-weight:700;
+    color:#4b5563;
+  }
+  .upload-box .sub {
+    font-size:0.68rem;
+    color:#9ca3af;
+    margin-top:2px;
+  }
+  .upload-box img.preview {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:12px;
+  }
+  .upload-box input[type="file"] { display:none; }
+  .upload-hint {
+    font-size:0.75rem;
+    color:#92400e;
+    background:#fef3c7;
+    padding:8px 12px;
+    border-radius:8px;
+    margin-top:8px;
+    display:flex;
+    gap:6px;
+    align-items:flex-start;
+    line-height:1.5;
+  }
+  .submit-btn {
+    width:100%;
+    padding:15px;
+    background:linear-gradient(135deg,#ffd400,#ffb800);
+    border:none;
+    border-radius:14px;
+    font-size:1rem;
+    font-weight:800;
+    color:#1a1a1a;
+    cursor:pointer;
+    margin-top:10px;
+    transition:all 0.2s;
+    font-family:inherit;
+    box-shadow:0 4px 14px rgba(255,184,0,0.35);
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,184,0,0.5); }
+  .submit-btn:active { transform:translateY(0); }
+  .convert-note {
+    text-align:center;
+    font-size:0.75rem;
+    color:#6b7280;
+    margin-top:12px;
+    line-height:1.6;
+  }
+  .convert-note strong { color:#1a1a1a; }
+  .hidden { display:none !important; }
+  @media(max-width:420px){
+    .hero h1 { font-size:1.25rem; }
+    .content { padding:20px 16px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="badge">🎁 رایگان</div>
+    <h1>سیم‌کارت رایگانت را بگیر</h1>
+    <p>فقط با چند ثانیه وقت گذاشتن، سیم‌کارتت آماده ارسال می‌شود</p>
+  </div>
+
+  <div class="content">
+    <div class="notice">
+      <span>✍️</span>
+      <div>لطفاً فرم را با دقت و کامل پر کنید تا سیم‌کارت شما بدون معطلی ارسال شود.</div>
+    </div>
+
+    <form id="orderForm" onsubmit="return false;">
+      <div class="field">
+        <label>نام</label>
+        <input type="text" id="firstName" placeholder="نام خود را وارد کنید">
+      </div>
+      <div class="field">
+        <label>نام خانوادگی</label>
+        <input type="text" id="lastName" placeholder="نام خانوادگی خود را وارد کنید">
+      </div>
+      <div class="field">
+        <label>کد ملی</label>
+        <input type="text" id="nationalId" placeholder="کد ملی ۱۰ رقمی" inputmode="numeric" maxlength="10">
+      </div>
+      <div class="field">
+        <label>شماره تماس به نام خودتان</label>
+        <input type="tel" id="phone" placeholder="مثلاً 09123456789" inputmode="numeric" maxlength="11">
+      </div>
+
+      <div class="field">
+        <label>از کدام مدرک شناسایی استفاده می‌کنید؟</label>
+        <div class="radio-group">
+          <label class="radio-card" id="cardNational">
+            <input type="radio" name="docType" value="کارت ملی" onchange="handleDocType()">
+            <span>🪪 پشت و روی کارت ملی</span>
+          </label>
+          <label class="radio-card" id="cardShenasname">
+            <input type="radio" name="docType" value="صفحه اول شناسنامه" onchange="handleDocType()">
+            <span>📘 صفحه اول شناسنامه</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="uploadNational" class="hidden">
+        <div class="field">
+          <label>تصاویر کارت ملی</label>
+          <div class="upload-area">
+            <label class="upload-box" id="boxFront">
+              <input type="file" accept="image/*" onchange="previewImage(this,'boxFront')">
+              <div class="icon">＋</div>
+              <div class="label">روی کارت ملی</div>
+              <div class="sub">برای انتخاب عکس کلیک کنید</div>
+            </label>
+            <label class="upload-box" id="boxBack">
+              <input type="file" accept="image/*" onchange="previewImage(this,'boxBack')">
+              <div class="icon">＋</div>
+              <div class="label">پشت کارت ملی</div>
+              <div class="sub">برای انتخاب عکس کلیک کنید</div>
+            </label>
+          </div>
+          <div class="upload-hint">
+            <span>💡</span>
+            <div>لطفاً تصاویر کارت ملی را <strong>صاف، خوانا و بدون تیرگی</strong> ثبت کنید تا تأیید سریع‌تر انجام شود.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="uploadShenasname" class="hidden">
+        <div class="field">
+          <label>تصویر صفحه اول شناسنامه</label>
+          <div class="upload-area">
+            <label class="upload-box" id="boxShenasname">
+              <input type="file" accept="image/*" onchange="previewImage(this,'boxShenasname')">
+              <div class="icon">＋</div>
+              <div class="label">صفحه اول شناسنامه</div>
+              <div class="sub">برای انتخاب عکس کلیک کنید</div>
+            </label>
+          </div>
+          <div class="upload-hint">
+            <span>⚠️</span>
+            <div>حتماً <strong>شناسنامه کاملاً باز</strong> باشد؛ تا شده یا نیمه‌باز نباشد. تصویر باید صاف و خوانا باشد.</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="submit-btn" onclick="submitForm()">
+        ادامه و دریافت سیم‌کارت
+      </button>
+
+      <div class="convert-note">
+        پس از تکمیل، اطلاعات شما به یک <strong>پیام آماده در واتساپ</strong> تبدیل می‌شود تا سریع‌تر ارسال شود.
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = "989XXXXXXXXX"; // ← شماره واتساپ خود را جایگزین کنید (بدون + و بدون 0)
+
+function handleDocType() {
+  const selected = document.querySelector('input[name="docType"]:checked');
+  document.getElementById('cardNational').classList.remove('selected');
+  document.getElementById('cardShenasname').classList.remove('selected');
+
+  const national = document.getElementById('uploadNational');
+  const shenas = document.getElementById('uploadShenasname');
+
+  if (!selected) {
+    national.classList.add('hidden');
+    shenas.classList.add('hidden');
+    return;
+  }
+
+  if (selected.value === 'کارت ملی') {
+    document.getElementById('cardNational').classList.add('selected');
+    national.classList.remove('hidden');
+    shenas.classList.add('hidden');
+    document.querySelector('#boxShenasname input').value = '';
+  } else {
+    document.getElementById('cardShenasname').classList.add('selected');
+    shenas.classList.remove('hidden');
+    national.classList.add('hidden');
+    document.querySelector('#boxFront input').value = '';
+    document.querySelector('#boxBack input').value = '';
+  }
+}
+
+function previewImage(input, boxId) {
+  const box = document.getElementById(boxId);
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      box.classList.add('filled');
+      const old = box.querySelector('img.preview');
+      if (old) old.remove();
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.className = 'preview';
+      box.appendChild(img);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function submitForm() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const nationalId = document.getElementById('nationalId').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const docTypeEl = document.querySelector('input[name="docType"]:checked');
+
+  if (!firstName || !lastName || !nationalId || !phone || !docTypeEl) {
+    alert('لطفاً همه فیلدها را با دقت پر کنید.');
+    return;
+  }
+  if (nationalId.length !== 10 || !/^\d+$/.test(nationalId)) {
+    alert('کد ملی باید ۱۰ رقم عددی باشد.');
+    return;
+  }
+  if (phone.length !== 11 || !/^09\d{9}$/.test(phone)) {
+    alert('شماره تماس معتبر وارد کنید (مثل 09123456789).');
+    return;
+  }
+
+  const docType = docTypeEl.value;
+  let uploadStatus = '';
+
+  if (docType === 'کارت ملی') {
+    const front = document.querySelector('#boxFront input').files.length;
+    const back = document.querySelector('#boxBack input').files.length;
+    if (!front || !back) {
+      alert('لطفاً هر دو تصویر (روی و پشت) کارت ملی را آپلود کنید.');
+      return;
+    }
+    uploadStatus = '✅ روی کارت ملی و پشت کارت ملی آپلود شد (در صفحه بعد ارسال کنید)';
+  } else {
+    const shenas = document.querySelector('#boxShenasname input').files.length;
+    if (!shenas) {
+      alert('لطفاً تصویر صفحه اول شناسنامه را آپلود کنید.');
+      return;
+    }
+    uploadStatus = '✅ تصویر صفحه اول شناسنامه آپلود شد (در صفحه بعد ارسال کنید)';
+  }
+
+  const message =
+`📋 *درخواست دریافت سیم‌کارت رایگان*
+
+👤 نام: ${firstName}
+👤 نام خانوادگی: ${lastName}
+🆔 کد ملی: ${nationalId}
+📞 شماره تماس: ${phone}
+📄 مدرک شناسایی: ${docType}
+${uploadStatus}
+
+—
+لطفاً تصاویر آپلود شده را همراه همین پیام ارسال کنید.
+پس از ارسال، مبلغ ۱۹ هزار تومان را واریز فرمایید تا سیم‌کارت برای شما ارسال شود. 💛`;
+
+  const encoded = encodeURIComponent(message);
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+
+  window.location.href = url;
+}
+</script>
+</body>
+</html>
