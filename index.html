@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -10,23 +11,22 @@
 <style>
 :root {
   --yellow: #ffd600;
-  --black: #171717;
-  --muted: #747474;
-  --border: #e8e8e8;
-  --surface: #ffffff;
-  --background: #f5f5f3;
+  --ink: #171717;
+  --muted: #626262;
+  --border: #dedede;
+  --bg: #f5f5f3;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 34px 16px 50px;
-  background: var(--background);
-  color: var(--black);
+  padding: 24px 14px 42px;
+  background: var(--bg);
+  color: var(--ink);
   font-family: "Vazirmatn", Tahoma, sans-serif;
-  font-size: 16px;
-  line-height: 1.9;
+  font-size: 19px;
+  line-height: 2;
 }
 
 .page {
@@ -36,133 +36,109 @@ body {
 
 .hero {
   overflow: hidden;
-  position: relative;
-  min-height: 265px;
-  padding: 22px 20px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding: 23px 18px 27px;
+  margin-bottom: 22px;
   background: var(--yellow);
   border-radius: 26px;
-  margin-bottom: 23px;
-}
-
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border: 1px solid #17171712;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.hero::before {
-  width: 220px;
-  height: 220px;
-  top: -125px;
-  right: -60px;
-}
-
-.hero::after {
-  width: 190px;
-  height: 190px;
-  bottom: -135px;
-  left: -65px;
 }
 
 .sim-image-wrap {
   width: 190px;
-  height: 130px;
-  margin: 0 auto 14px;
+  height: 125px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 1;
+  margin: 0 auto 8px;
 }
 
 .sim-image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 10px 9px #5a47001c);
 }
 
 .hero h1 {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(25px, 6vw, 32px);
-  line-height: 1.55;
+  margin: 0;
+  font-size: clamp(27px, 7vw, 34px);
   font-weight: 900;
-  margin: 0 0 5px;
-  letter-spacing: -.6px;
+  line-height: 1.65;
 }
 
 .hero p {
-  position: relative;
-  z-index: 1;
-  max-width: 390px;
-  margin: 0 auto;
-  font-size: 15px;
-  font-weight: 600;
+  margin: 5px auto 0;
+  font-size: 18px;
   line-height: 1.9;
+  font-weight: 700;
 }
 
 .form-card {
-  background: var(--surface);
-  border: 1px solid #ededeb;
-  border-radius: 25px;
-  padding: 26px 23px;
-  box-shadow: 0 14px 40px #15151508;
+  padding: 26px 22px;
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 24px;
+  box-shadow: 0 12px 36px #00000008;
 }
 
 .section-heading {
-  margin: 0 0 19px;
-  font-size: 19px;
+  margin: 0 0 20px;
+  font-size: 23px;
   font-weight: 900;
-  letter-spacing: -.3px;
+  line-height: 1.7;
 }
 
 .section-heading small {
   display: block;
-  margin-top: 2px;
-  font-size: 13px;
-  font-weight: 400;
+  margin-top: 3px;
   color: var(--muted);
-  letter-spacing: 0;
+  font-size: 17px;
+  font-weight: 600;
 }
 
-.field { margin-bottom: 17px; }
+.field {
+  margin-bottom: 20px;
+}
 
-.field label {
+.field > label {
   display: block;
-  font-size: 14px;
+  margin-bottom: 9px;
+  font-size: 19px;
   font-weight: 800;
-  margin-bottom: 7px;
 }
 
 input[type="text"],
 input[type="tel"] {
   display: block;
   width: 100%;
-  height: 55px;
-  padding: 0 15px;
-  border: 1px solid #e4e4e4;
-  border-radius: 13px;
+  min-height: 62px;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
   background: #fbfbfa;
-  color: var(--black);
-  font: inherit;
-  font-size: 15px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 600;
   outline: none;
-  transition: border-color .2s, box-shadow .2s, background .2s;
+  transition: .2s;
 }
 
-input::placeholder { color: #a2a2a2; }
+input::placeholder {
+  color: #777;
+  opacity: 1;
+  font-size: 17px;
+  font-weight: 500;
+}
 
 input[type="text"]:focus,
 input[type="tel"]:focus {
-  background: white;
-  border-color: #d2af00;
-  box-shadow: 0 0 0 3px #ffd60024;
+  background: #fff;
+  border-color: #c3a400;
+  box-shadow: 0 0 0 4px #ffd60025;
 }
 
 .two-columns {
@@ -171,51 +147,78 @@ input[type="tel"]:focus {
   gap: 13px;
 }
 
+.address-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  margin-bottom: 13px;
+  border: 1px solid #ead78b;
+  border-radius: 15px;
+  background: #fff9df;
+  font-size: 16px;
+  line-height: 2;
+  font-weight: 700;
+}
+
+.notice-mark {
+  flex: 0 0 29px;
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: var(--yellow);
+  font-size: 18px;
+  line-height: 1;
+}
+
 .separator {
   height: 1px;
-  background: #ededed;
-  margin: 25px 0;
+  background: #e8e8e8;
+  margin: 27px 0;
 }
 
 .prefix-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 13px;
 }
 
 .prefix-card {
-  min-height: 80px;
-  padding: 13px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  border: 1px solid #e6e6e6;
+  gap: 13px;
+  min-height: 84px;
+  padding: 14px;
+  border: 1.5px solid var(--border);
   border-radius: 15px;
-  background: white;
+  background: #fff;
   cursor: pointer;
   transition: .2s;
 }
 
 .prefix-card:has(input:checked) {
-  border-color: #c8a900;
+  border-color: #c2a100;
   background: #fffbed;
-  box-shadow: 0 0 0 2px #ffd6001e;
+  box-shadow: 0 0 0 2px #ffd60024;
 }
 
-.prefix-card input {
+.prefix-card input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
   margin: 0;
-  border: 1.7px solid #c5c5c5;
+  border: 2px solid #aaa;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.prefix-card input:checked {
-  border: 6px solid #c4a200;
+.prefix-card input[type="radio"]:checked {
+  border: 7px solid #b99b00;
 }
 
 .prefix-copy {
@@ -226,77 +229,112 @@ input[type="tel"]:focus {
 
 .prefix-caption {
   display: block;
-  color: #858585;
-  font-size: 11px;
+  color: #686868;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.5;
   text-align: right;
 }
 
 .prefix-number {
   display: block;
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 900;
   line-height: 1.5;
-  letter-spacing: .4px;
 }
 
 .terms {
   display: flex;
   align-items: flex-start;
-  gap: 11px;
-  margin-top: 23px;
-  padding: 14px;
-  border: 1px solid #eee8ca;
-  border-radius: 13px;
-  background: #fffdf5;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.9;
+  gap: 13px;
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid #eadfbb;
+  border-radius: 15px;
+  background: #fffdf4;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 2;
   cursor: pointer;
 }
 
 .terms input {
-  flex: 0 0 18px;
-  width: 18px;
-  height: 18px;
-  margin: 5px 0 0;
-  accent-color: #c4a200;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 7px 0 0;
+  accent-color: #b99b00;
 }
 
 .submit-button {
-  display: block;
   width: 100%;
-  min-height: 59px;
-  margin-top: 19px;
+  min-height: 66px;
+  margin-top: 20px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 15px;
   background: var(--yellow);
-  color: #171717;
+  color: var(--ink);
   font-family: inherit;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 900;
   cursor: pointer;
-  transition: transform .15s, filter .15s;
+  transition: .2s;
 }
 
 .submit-button:hover { filter: brightness(.97); }
 .submit-button:active { transform: scale(.99); }
 
 .footer {
-  margin: 18px 0 0;
-  color: #929292;
-  font-size: 11px;
+  margin: 20px 0 0;
+  color: #686868;
+  font-size: 15px;
   text-align: center;
 }
 
 @media (max-width: 420px) {
-  body { padding: 17px 11px 30px; }
-  .hero { min-height: 245px; padding: 18px 15px 22px; border-radius: 22px; }
-  .sim-image-wrap { height: 115px; width: 170px; }
-  .form-card { padding: 22px 15px; border-radius: 21px; }
+  body {
+    padding: 15px 10px 30px;
+    font-size: 19px;
+  }
+
+  .hero {
+    padding: 20px 14px 24px;
+    border-radius: 22px;
+  }
+
+  .sim-image-wrap {
+    width: 175px;
+    height: 115px;
+  }
+
+  .hero p { font-size: 17px; }
+
+  .form-card {
+    padding: 22px 15px;
+    border-radius: 21px;
+  }
+
   .two-columns { gap: 10px; }
-  .prefix-card { padding: 11px 9px; gap: 8px; }
-  .prefix-number { font-size: 19px; }
+
+  .two-columns input {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 17px;
+  }
+
+  .two-columns input::placeholder { font-size: 15px; }
+
+  .prefix-card {
+    gap: 9px;
+    padding: 12px 9px;
+  }
+
+  .prefix-number { font-size: 22px; }
+
+  .address-notice {
+    padding: 13px;
+    font-size: 15px;
+  }
 }
 </style>
 </head>
@@ -309,7 +347,7 @@ input[type="tel"]:focus {
       <img
         class="sim-image"
         src="https://commons.wikimedia.org/wiki/Special:FilePath/Sim_card.png"
-        alt="تصویر سیم‌کارت واقعی"
+        alt="سیم‌کارت"
       >
     </div>
     <h1>درخواست سیم‌کارت رایگان</h1>
@@ -321,15 +359,16 @@ input[type="tel"]:focus {
 
       <h2 class="section-heading">
         اطلاعات متقاضی
-        <small>لطفاً اطلاعات را مطابق مدارک خود وارد کنید.</small>
+        <small>لطفاً تمام فیلدها را با دقت تکمیل کنید.</small>
       </h2>
 
       <div class="two-columns">
         <div class="field">
           <label for="firstName">نام</label>
           <input id="firstName" name="firstName" type="text"
-            placeholder="نام" autocomplete="given-name" required>
+            placeholder="نام خود را وارد کنید" autocomplete="given-name" required>
         </div>
+
         <div class="field">
           <label for="lastName">نام خانوادگی</label>
           <input id="lastName" name="lastName" type="text"
@@ -338,67 +377,76 @@ input[type="tel"]:focus {
       </div>
 
       <div class="field">
-        <label for="nationalId">کد ملی</label>
-        <input id="nationalId" name="nationalId" type="text"
-          inputmode="numeric" maxlength="10" placeholder="کد ملی ۱۰ رقمی" required>
+        <label for="nationalCode">کد ملی</label>
+        <input id="nationalCode" name="nationalCode" type="text"
+          inputmode="numeric" maxlength="10"
+          placeholder="کد ملی ۱۰ رقمی" required>
       </div>
 
       <div class="field">
-        <label for="phone">شماره تلفن همراه</label>
+        <label for="phone">شماره تماس</label>
         <input id="phone" name="phone" type="tel"
-          inputmode="tel" placeholder="شماره تماس" autocomplete="tel" required>
+          inputmode="tel" placeholder="شماره تلفن همراه" autocomplete="tel" required>
       </div>
 
       <div class="field">
-        <label for="address">آدرس کامل</label>
+        <label for="address">آدرس دقیق محل دریافت</label>
+
+        <div class="address-notice">
+          <span class="notice-mark">!</span>
+          <span>لطفاً آدرس را با دقت و به‌صورت کامل وارد کنید؛ سیم‌کارت به آدرسی که اعلام می‌کنید ارسال خواهد شد.</span>
+        </div>
+
         <input id="address" name="address" type="text"
-          placeholder="استان، شهر، خیابان، پلاک" autocomplete="street-address" required>
+          placeholder="استان، شهر، خیابان، کوچه و پلاک"
+          autocomplete="street-address" required>
       </div>
 
       <div class="field">
         <label for="postalCode">کد پستی</label>
         <input id="postalCode" name="postalCode" type="text"
-          inputmode="numeric" maxlength="10" placeholder="کد پستی ۱۰ رقمی" required>
+          inputmode="numeric" maxlength="10"
+          placeholder="کد پستی ۱۰ رقمی" required>
       </div>
 
       <div class="separator"></div>
 
       <h2 class="section-heading">
         انتخاب پیش‌شماره
-        <small>یکی از گزینه‌های زیر را انتخاب کنید.</small>
+        <small>پیش‌شماره موردنظر خود را انتخاب کنید.</small>
       </h2>
 
       <div class="prefix-grid">
         <label class="prefix-card">
           <input type="radio" name="prefix" value="0900" required>
-          <div class="prefix-copy">
+          <span class="prefix-copy">
             <span class="prefix-caption">پیش‌شماره</span>
             <span class="prefix-number">0900</span>
-          </div>
+          </span>
         </label>
 
         <label class="prefix-card">
           <input type="radio" name="prefix" value="0903">
-          <div class="prefix-copy">
+          <span class="prefix-copy">
             <span class="prefix-caption">پیش‌شماره</span>
             <span class="prefix-number">0903</span>
-          </div>
+          </span>
         </label>
 
         <label class="prefix-card">
           <input type="radio" name="prefix" value="0936">
-          <div class="prefix-copy">
+          <span class="prefix-copy">
             <span class="prefix-caption">پیش‌شماره</span>
             <span class="prefix-number">0936</span>
-          </div>
+          </span>
         </label>
 
         <label class="prefix-card">
           <input type="radio" name="prefix" value="0930">
-          <div class="prefix-copy">
+          <span class="prefix-copy">
             <span class="prefix-caption">پیش‌شماره</span>
             <span class="prefix-number">0930</span>
-          </div>
+          </span>
         </label>
       </div>
 
@@ -407,15 +455,11 @@ input[type="tel"]:focus {
         <span>کلیه شرایط و قوانین ایرانسل را قبول دارم.</span>
       </label>
 
-      <button type="submit" class="submit-button">
-        ثبت درخواست
-      </button>
-
+      <button type="submit" class="submit-button">ثبت درخواست</button>
     </form>
   </section>
 
   <p class="footer">لطفاً پیش از ارسال، اطلاعات واردشده را بررسی کنید.</p>
-
 </main>
 
 <script>
@@ -429,50 +473,59 @@ document.getElementById("simForm").addEventListener("submit", function(event) {
 
   const firstName = document.getElementById("firstName").value.trim();
   const lastName = document.getElementById("lastName").value.trim();
-  const nationalId = document.getElementById("nationalId").value.trim();
+  const nationalCode = document.getElementById("nationalCode").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const address = document.getElementById("address").value.trim();
   const postalCode = document.getElementById("postalCode").value.trim();
   const prefix = form.querySelector('input[name="prefix"]:checked').value;
 
-  if (!/^\d{10}$/.test(nationalId)) {
+  if (!/^\d{10}$/.test(nationalCode)) {
     alert("کد ملی باید ۱۰ رقم باشد.");
+    document.getElementById("nationalCode").focus();
     return;
   }
 
   if (!/^\d{10}$/.test(postalCode)) {
     alert("کد پستی باید ۱۰ رقم باشد.");
+    document.getElementById("postalCode").focus();
     return;
   }
 
   const message =
-`📋 *درخواست دریافت سیم‌کارت رایگان*
-
-👤 نام: ${firstName}
-👤 نام خانوادگی: ${lastName}
-🆔 کد ملی: ${nationalId}
-📞 شماره تماس: ${phone}
-📍 آدرس: ${address}
-📮 کد پستی: ${postalCode}
-🔢 پیش‌شماره انتخابی: ${prefix}
+`درخواست دریافت سیم‌کارت رایگان
 
 ━━━━━━━━━━━━━━━━━━
-*مراحل باقی‌مانده برای تکمیل درخواست*
 
-📎 *ارسال مدارک هویتی*
-لطفاً تصویر پشت و روی کارت ملی یا صفحه اول شناسنامه را ارسال کنید.
+نام: ${firstName}
+نام خانوادگی: ${lastName}
+کد ملی: ${nationalCode}
+شماره تماس: ${phone}
+آدرس دقیق: ${address}
+کد پستی: ${postalCode}
+پیش‌شماره انتخابی: ${prefix}
 
-💳 *واریز هزینه چاپ و ارسال مدارک*
-مبلغ: ۱۹,۰۰۰ تومان
-شماره کارت: 5022291098953209
+✅ تأیید اطلاعات و پذیرش شرایط و قوانین
+
+اینجانب صحت اطلاعات واردشده را تأیید می‌کنم و شرایط و قوانین اعلام‌شده را پذیرفته‌ام.
+
+━━━━━━━━━━━━━━━━━━
+
+مراحل باقی‌مانده جهت تکمیل درخواست
+
+۱. 📎 ارسال تصویر پشت و روی کارت ملی یا صفحه اول شناسنامه
+
+۲. 💳 واریز مبلغ ۱۹٬۰۰۰ تومان بابت هزینه چاپ و ارسال مدارک
+
+${"5022291098953209"}
 به نام: حمیدرضا سلیمی
 
-🧾 *ارسال رسید پرداخت*
-پس از پرداخت، تصویر رسید را ارسال کنید.`;
+۳. 🧾 ارسال تصویر رسید واریز وجه به همراه مدارک هویتی
+
+پس از ارسال مدارک و رسید پرداخت، مراحل بعدی درخواست پیگیری خواهد شد.`;
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank", "noopener,noreferrer");
 });
 </script>
 </body>
-  </html>
+</html>
