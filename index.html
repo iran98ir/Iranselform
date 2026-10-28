@@ -1,642 +1,491 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101828">
-  <title>درخواست سیم‌کارت</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درخواست سیم‌کارت</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 
-    :root {
-      --bg: #f3f5f9;
-      --surface: #ffffff;
-      --text: #182230;
-      --muted: #667085;
-      --primary: #155eef;
-      --primary-dark: #004eeb;
-      --border: #e4e7ec;
-      --success: #067647;
-      --radius: 22px;
-      --shadow: 0 12px 36px rgba(16, 24, 40, .07);
-    }
+:root {
+  --yellow: #ffd600;
+  --ink: #171717;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f5f6f8;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Vazirmatn", Tahoma, sans-serif;
-      font-size: 17px;
-      line-height: 1.9;
-    }
+body {
+  margin: 0;
+  padding: 22px 14px 40px;
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #fff5b8 0%, transparent 42%),
+    var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.9;
+}
 
-    button, input, textarea {
-      font: inherit;
-    }
+.container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
 
-    .page {
-      width: min(100% - 28px, 760px);
-      margin: 28px auto 52px;
-    }
+.hero {
+  text-align: center;
+  padding: 26px 18px 24px;
+  background: linear-gradient(145deg, #ffe66d, #ffd000);
+  border-radius: 28px;
+  box-shadow: 0 12px 30px #b995001f;
+  margin-bottom: 20px;
+}
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 34px 28px;
-      border-radius: 28px;
-      color: #fff;
-      background: linear-gradient(135deg, #101828, #183d75 65%, #155eef);
-      box-shadow: var(--shadow);
-    }
+.hero-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 12px;
+  border-radius: 22px;
+  background: #ffffffb8;
+  font-size: 36px;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border: 35px solid rgba(255,255,255,.07);
-      border-radius: 50%;
-      left: -80px;
-      top: -90px;
-      pointer-events: none;
-    }
+.hero h1 {
+  font-size: clamp(25px, 6vw, 32px);
+  font-weight: 900;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
 
-    .eyebrow {
-      display: inline-block;
-      padding: 5px 12px;
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 999px;
-      color: #e0eaff;
-      font-size: 14px;
-      font-weight: 600;
-    }
+.hero p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
 
-    h1 {
-      margin: 16px 0 8px;
-      font-size: clamp(27px, 6vw, 39px);
-      line-height: 1.5;
-      font-weight: 900;
-    }
+.notice {
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  color: #454545;
+  font-size: 14px;
+}
 
-    .hero p {
-      margin: 0;
-      max-width: 540px;
-      color: #e0eaff;
-      font-size: 17px;
-    }
+.notice strong {
+  color: #171717;
+}
 
-    .notice {
-      margin-top: 18px;
-      padding: 15px 17px;
-      border: 1px solid #d1e0ff;
-      border-radius: 16px;
-      background: #eff4ff;
-      color: #1849a9;
-      font-size: 15px;
-    }
+.form-card {
+  padding: 23px 18px;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px #00000008;
+}
 
-    .card {
-      margin-top: 20px;
-      padding: 25px;
-      border: 1px solid rgba(228,231,236,.9);
-      border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-    }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: 19px;
+  font-weight: 900;
+}
 
-    .section-heading {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 20px;
-      font-size: 22px;
-      font-weight: 800;
-    }
+.section-title span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 12px;
+  background: #fff2a8;
+  font-size: 17px;
+}
 
-    .section-number {
-      display: grid;
-      place-items: center;
-      flex: 0 0 38px;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: #eff4ff;
-      color: var(--primary);
-      font-size: 17px;
-      font-weight: 800;
-    }
+.field {
+  margin-bottom: 17px;
+}
 
-    .fields {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
+label.field-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 15px;
+  font-weight: 800;
+}
 
-    .field {
-      min-width: 0;
-    }
+input[type="text"],
+input[type="tel"] {
+  width: 100%;
+  min-height: 56px;
+  padding: 13px 15px;
+  border: 1.5px solid var(--border);
+  border-radius: 15px;
+  background: #fafafa;
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  outline: none;
+  transition: .2s;
+}
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
+input:focus {
+  border-color: #d2ad00;
+  background: #fff;
+  box-shadow: 0 0 0 4px #ffd60022;
+}
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 16px;
-      font-weight: 700;
-    }
+input::placeholder {
+  color: #9ca3af;
+  font-size: 14px;
+}
 
-    .required {
-      color: #d92d20;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
 
-    input, textarea {
-      display: block;
-      width: 100%;
-      min-height: 56px;
-      padding: 13px 15px;
-      border: 1.5px solid var(--border);
-      border-radius: 14px;
-      outline: none;
-      background: #fff;
-      color: var(--text);
-      transition: border-color .2s, box-shadow .2s;
-    }
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 24px 0;
+}
 
-    textarea {
-      min-height: 112px;
-      resize: vertical;
-    }
+.hint {
+  margin: -8px 0 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
 
-    input:focus, textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(21,94,239,.10);
-    }
+.prefix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  direction: rtl;
+}
 
-    input::placeholder, textarea::placeholder {
-      color: #98a2b3;
-    }
+.prefix-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 76px;
+  padding: 13px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 17px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s;
+}
 
-    .field-help {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
+.prefix-card:active {
+  transform: scale(.98);
+}
 
-    .prefix-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
-    }
+.prefix-card:has(input:checked) {
+  border-color: #d6b000;
+  background: #fffbea;
+  box-shadow: 0 0 0 2px #ffd60022;
+}
 
-    .prefix-option {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      min-height: 88px;
-      padding: 17px;
-      border: 1.5px solid var(--border);
-      border-radius: 17px;
-      cursor: pointer;
-      transition: .2s ease;
-    }
+.prefix-card input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+  margin: 0;
+  border: 2px solid #c5c5c5;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
 
-    .prefix-option:hover {
-      border-color: #84adff;
-      background: #f8faff;
-    }
+.prefix-card input[type="radio"]:checked {
+  border: 6px solid #d2ad00;
+}
 
-    .prefix-option:has(input:checked) {
-      border-color: var(--primary);
-      background: #eff4ff;
-      box-shadow: 0 0 0 2px rgba(21,94,239,.08);
-    }
+.prefix-number {
+  direction: ltr;
+  text-align: left;
+  margin-right: auto;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: .4px;
+  white-space: nowrap;
+}
 
-    .prefix-option input {
-      position: absolute;
-      opacity: 0;
-      width: 1px;
-      height: 1px;
-      min-height: 1px;
-      pointer-events: none;
-    }
+.prefix-label {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 1px;
+}
 
-    .prefix-number {
-      direction: ltr;
-      unicode-bidi: isolate;
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: .5px;
-      line-height: 1.3;
-    }
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 15px;
+  margin-top: 22px;
+  border: 1px solid #eee6bd;
+  border-radius: 16px;
+  background: #fffdf2;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-    .prefix-caption {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-    }
+.terms input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 4px 0 0;
+  accent-color: #d2ad00;
+}
 
-    .radio-mark {
-      display: grid;
-      place-items: center;
-      flex: 0 0 23px;
-      width: 23px;
-      height: 23px;
-      border: 2px solid #b8c0cc;
-      border-radius: 50%;
-      background: #fff;
-    }
+.submit-btn {
+  width: 100%;
+  min-height: 60px;
+  margin-top: 19px;
+  border: 0;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #ffe45c, #ffd000);
+  color: #171717;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 18px #d1ab002c;
+  transition: .2s;
+}
 
-    .prefix-option input:checked + .prefix-content + .radio-mark {
-      border: 7px solid var(--primary);
-    }
+.submit-btn:hover {
+  filter: brightness(.98);
+}
 
-    .prefix-option input:focus-visible + .prefix-content + .radio-mark {
-      outline: 3px solid #84adff;
-      outline-offset: 4px;
-    }
+.submit-btn:active {
+  transform: scale(.99);
+}
 
-    .steps {
-      margin: 0;
-      padding-right: 22px;
-    }
+.footer-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 18px 8px 0;
+}
 
-    .steps li {
-      padding-right: 5px;
-      margin: 8px 0;
-    }
+@media (max-width: 380px) {
+  body {
+    padding: 14px 10px 28px;
+  }
 
-    .privacy-note {
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: #f9fafb;
-      color: #475467;
-      font-size: 14px;
-    }
+  .form-card {
+    padding: 19px 14px;
+  }
 
-    .submit-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 60px;
-      margin-top: 22px;
-      padding: 15px 20px;
-      border: none;
-      border-radius: 16px;
-      background: var(--primary);
-      color: #fff;
-      font-size: 18px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background .2s, transform .2s;
-    }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 
-    .submit-button:hover {
-      background: var(--primary-dark);
-    }
+  .prefix-card {
+    padding: 11px;
+    gap: 8px;
+  }
 
-    .submit-button:active {
-      transform: scale(.99);
-    }
-
-    .submit-button:focus-visible {
-      outline: 4px solid #84adff;
-      outline-offset: 3px;
-    }
-
-    .status {
-      display: none;
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      font-size: 15px;
-      overflow-wrap: anywhere;
-    }
-
-    .status.error {
-      display: block;
-      background: #fef3f2;
-      color: #b42318;
-    }
-
-    .status.success {
-      display: block;
-      background: #ecfdf3;
-      color: var(--success);
-    }
-
-    footer {
-      padding: 22px 8px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    @media (max-width: 520px) {
-      body {
-        font-size: 16px;
-      }
-
-      .page {
-        width: min(100% - 20px, 760px);
-        margin-top: 12px;
-      }
-
-      .hero {
-        padding: 27px 20px;
-        border-radius: 23px;
-      }
-
-      .card {
-        padding: 19px 16px;
-        margin-top: 14px;
-        border-radius: 19px;
-      }
-
-      .fields {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .prefix-grid {
-        gap: 10px;
-      }
-
-      .prefix-option {
-        min-height: 82px;
-        padding: 12px 11px;
-        gap: 8px;
-      }
-
-      .prefix-number {
-        font-size: 22px;
-      }
-
-      .prefix-caption {
-        font-size: 12px;
-      }
-
-      .section-heading {
-        font-size: 20px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .prefix-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .prefix-option {
-        min-height: 74px;
-      }
-    }
-  </style>
+  .prefix-number {
+    font-size: 18px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <main class="page">
-    <header class="hero">
-      <span class="eyebrow">فرم ثبت درخواست</span>
-      <h1>درخواست سیم‌کارت</h1>
-      <p>
-        پیش‌شماره دلخواهت را انتخاب کن و اطلاعات لازم را با دقت وارد کن
-        تا درخواستت برای بررسی آماده شود.
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-icon">📱</div>
+    <h1>درخواست سیم‌کارت رایگان</h1>
+    <p>اطلاعات خود را با دقت وارد کنید و درخواستتان را ثبت کنید.</p>
+  </header>
+
+  <div class="notice">
+    <strong>📌 توجه:</strong>
+    پیش از ثبت درخواست، شرایط دریافت و هزینه‌های احتمالی چاپ و ارسال را بررسی کنید.
+  </div>
+
+  <main class="form-card">
+    <form id="simForm">
+
+      <h2 class="section-title">
+        <span>👤</span>
+        اطلاعات شخصی
+      </h2>
+
+      <div class="grid">
+        <div class="field">
+          <label class="field-label" for="firstName">نام</label>
+          <input id="firstName" name="firstName" type="text"
+                 placeholder="نام خود را وارد کنید" autocomplete="given-name" required>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="lastName">نام خانوادگی</label>
+          <input id="lastName" name="lastName" type="text"
+                 placeholder="نام خانوادگی" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="nationalId">کد ملی</label>
+        <input id="nationalId" name="nationalId" type="text"
+               inputmode="numeric" maxlength="10"
+               placeholder="کد ملی ۱۰ رقمی" required>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="phone">شماره تلفن همراه</label>
+        <input id="phone" name="phone" type="tel"
+               inputmode="tel" placeholder="مثلاً 09123456789" required>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="address">آدرس کامل</label>
+        <input id="address" name="address" type="text"
+               placeholder="استان، شهر، خیابان و پلاک" autocomplete="street-address" required>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="postalCode">کد پستی</label>
+        <input id="postalCode" name="postalCode" type="text"
+               inputmode="numeric" maxlength="10"
+               placeholder="کد پستی ۱۰ رقمی" required>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2 class="section-title">
+        <span>🔢</span>
+        انتخاب پیش‌شماره
+      </h2>
+
+      <p class="hint">پیش‌شماره موردنظر خود را انتخاب کنید.</p>
+
+      <div class="prefix-grid">
+        <label class="prefix-card">
+          <input type="radio" name="prefix" value="0900" required>
+          <div>
+            <span class="prefix-label">پیش‌شماره</span>
+            <span class="prefix-number">0900</span>
+          </div>
+        </label>
+
+        <label class="prefix-card">
+          <input type="radio" name="prefix" value="0903">
+          <div>
+            <span class="prefix-label">پیش‌شماره</span>
+            <span class="prefix-number">0903</span>
+          </div>
+        </label>
+
+        <label class="prefix-card">
+          <input type="radio" name="prefix" value="0936">
+          <div>
+            <span class="prefix-label">پیش‌شماره</span>
+            <span class="prefix-number">0936</span>
+          </div>
+        </label>
+
+        <label class="prefix-card">
+          <input type="radio" name="prefix" value="0930">
+          <div>
+            <span class="prefix-label">پیش‌شماره</span>
+            <span class="prefix-number">0930</span>
+          </div>
+        </label>
+      </div>
+
+      <label class="terms">
+        <input type="checkbox" id="terms" required>
+        <span>شرایط و قوانین مربوط به این درخواست را مطالعه کرده‌ام و می‌پذیرم.</span>
+      </label>
+
+      <button type="submit" class="submit-btn">
+        ثبت درخواست در واتساپ ←
+      </button>
+
+      <p class="footer-note">
+        اطلاعات را پیش از ارسال بررسی کنید. هزینه‌های احتمالی باید شفاف اعلام شوند.
       </p>
-    </header>
 
-    <div class="notice">
-      پیش از ثبت اطلاعات، شرایط ارائه سیم‌کارت، هزینه‌های احتمالی و هویت
-      ارائه‌دهنده خدمت را از طریق مرجع معتبر بررسی کن.
-    </div>
-
-    <form id="requestForm" novalidate>
-      <section class="card">
-        <h2 class="section-heading">
-          <span class="section-number">۱</span>
-          اطلاعات تماس
-        </h2>
-
-        <div class="fields">
-          <div class="field">
-            <label for="firstName">نام <span class="required">*</span></label>
-            <input id="firstName" name="firstName" autocomplete="given-name"
-              placeholder="نام خود را وارد کنید" required maxlength="60">
-          </div>
-
-          <div class="field">
-            <label for="lastName">نام خانوادگی <span class="required">*</span></label>
-            <input id="lastName" name="lastName" autocomplete="family-name"
-              placeholder="نام خانوادگی" required maxlength="80">
-          </div>
-
-          <div class="field full">
-            <label for="phone">شماره تماس <span class="required">*</span></label>
-            <input id="phone" name="phone" type="tel" inputmode="tel"
-              autocomplete="tel" placeholder="مثلاً 09123456789"
-              required maxlength="20">
-            <p class="field-help">شماره‌ای وارد کن که به آن دسترسی داری.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-heading">
-          <span class="section-number">۲</span>
-          انتخاب پیش‌شماره
-        </h2>
-
-        <p class="field-help" style="margin: -10px 0 17px">
-          یکی از گزینه‌های زیر را انتخاب کن.
-        </p>
-
-        <div class="prefix-grid" role="radiogroup" aria-label="انتخاب پیش‌شماره">
-          <label class="prefix-option">
-            <input type="radio" name="prefix" value="0900" required>
-            <span class="prefix-content">
-              <span class="prefix-number">0900</span>
-              <span class="prefix-caption">پیش‌شماره انتخابی</span>
-            </span>
-            <span class="radio-mark" aria-hidden="true"></span>
-          </label>
-
-          <label class="prefix-option">
-            <input type="radio" name="prefix" value="0903">
-            <span class="prefix-content">
-              <span class="prefix-number">0903</span>
-              <span class="prefix-caption">پیش‌شماره انتخابی</span>
-            </span>
-            <span class="radio-mark" aria-hidden="true"></span>
-          </label>
-
-          <label class="prefix-option">
-            <input type="radio" name="prefix" value="0936">
-            <span class="prefix-content">
-              <span class="prefix-number">0936</span>
-              <span class="prefix-caption">پیش‌شماره انتخابی</span>
-            </span>
-            <span class="radio-mark" aria-hidden="true"></span>
-          </label>
-
-          <label class="prefix-option">
-            <input type="radio" name="prefix" value="0930">
-            <span class="prefix-content">
-              <span class="prefix-number">0930</span>
-              <span class="prefix-caption">پیش‌شماره انتخابی</span>
-            </span>
-            <span class="radio-mark" aria-hidden="true"></span>
-          </label>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2 class="section-heading">
-          <span class="section-number">۳</span>
-          اطلاعات تکمیلی
-        </h2>
-
-        <div class="fields">
-          <div class="field full">
-            <label for="postalCode">کد پستی (در صورت نیاز)</label>
-            <input id="postalCode" name="postalCode" inputmode="numeric"
-              autocomplete="postal-code" placeholder="کد پستی ۱۰ رقمی"
-              maxlength="10">
-          </div>
-
-          <div class="field full">
-            <label for="city">شهر محل سکونت</label>
-            <input id="city" name="city" autocomplete="address-level2"
-              placeholder="نام شهر">
-          </div>
-        </div>
-
-        <div class="privacy-note">
-          برای امنیت اطلاعاتت، شماره ملی، تصویر مدارک شناسایی، رمزها و
-          اطلاعات بانکی را در این فرم یا پیام‌رسان‌ها ارسال نکن.
-          اگر احراز هویت لازم باشد، از مسیر امن و معتبر ارائه‌دهنده خدمت استفاده کن.
-        </div>
-
-        <button class="submit-button" type="submit">
-          آماده‌سازی پیام واتساپ
-        </button>
-
-        <div id="status" class="status" role="status" aria-live="polite"></div>
-      </section>
     </form>
-
-    <footer>
-      ثبت فرم به‌تنهایی به معنی تأیید درخواست یا تضمین تخصیص سیم‌کارت نیست.
-    </footer>
   </main>
+</div>
 
-  <script>
-    const form = document.getElementById("requestForm");
-    const statusBox = document.getElementById("status");
+<script>
+const WHATSAPP_NUMBER = "989365021596";
 
-    function toEnglishDigits(value) {
-      return value
-        .replace(/[۰-۹]/g, digit => "۰۱۲۳۴۵۶۷۸۹".indexOf(digit))
-        .replace(/[٠-٩]/g, digit => "٠١٢٣٤٥٦٧٨٩".indexOf(digit));
-    }
+document.getElementById("simForm").addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    function showStatus(message, type) {
-      statusBox.textContent = message;
-      statusBox.className = "status " + type;
-    }
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      statusBox.className = "status";
+  const firstName = document.getElementById("firstName").value.trim();
+  const lastName = document.getElementById("lastName").value.trim();
+  const nationalId = document.getElementById("nationalId").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const postalCode = document.getElementById("postalCode").value.trim();
+  const prefix = form.querySelector('input[name="prefix"]:checked')?.value;
 
-      if (!form.reportValidity()) {
-        return;
-      }
+  if (!/^\d{10}$/.test(nationalId)) {
+    alert("کد ملی باید ۱۰ رقم باشد.");
+    document.getElementById("nationalId").focus();
+    return;
+  }
 
-      const firstName = document.getElementById("firstName").value.trim();
-      const lastName = document.getElementById("lastName").value.trim();
-      const phone = toEnglishDigits(
-        document.getElementById("phone").value.trim()
-      );
-      const postalCode = toEnglishDigits(
-        document.getElementById("postalCode").value.trim()
-      );
-      const city = document.getElementById("city").value.trim();
-      const prefix = form.querySelector('input[name="prefix"]:checked')?.value;
+  if (!/^\d{10}$/.test(postalCode)) {
+    alert("کد پستی باید ۱۰ رقم باشد.");
+    document.getElementById("postalCode").focus();
+    return;
+  }
 
-      if (!prefix) {
-        showStatus("لطفاً یک پیش‌شماره انتخاب کن.", "error");
-        return;
-      }
+  const message =
+`📋 *درخواست دریافت سیم‌کارت*
 
-      const normalizedPhone = phone.replace(/[\s()-]/g, "");
-      if (!/^(?:\+98|0098|0)?9\d{9}$/.test(normalizedPhone)) {
-        showStatus("شماره تماس را با قالب معتبر وارد کن.", "error");
-        return;
-      }
+👤 نام: ${firstName}
+👤 نام خانوادگی: ${lastName}
+📞 شماره تماس: ${phone}
+📍 آدرس: ${address}
+📮 کد پستی: ${postalCode}
+🔢 پیش‌شماره انتخابی: ${prefix}
 
-      if (postalCode && !/^\d{10}$/.test(postalCode)) {
-        showStatus("کد پستی باید ۱۰ رقم باشد.", "error");
-        return;
-      }
+لطفاً شرایط دریافت، مدارک موردنیاز و هزینه‌های احتمالی چاپ و ارسال را به‌صورت شفاف اعلام کنید.
 
-      const message = [
-        "سلام، برای ثبت درخواست سیم‌کارت پیام می‌دهم.",
-        "",
-        "نام: " + firstName,
-        "نام خانوادگی: " + lastName,
-        "شماره تماس: " + normalizedPhone,
-        "پیش‌شماره انتخابی: " + prefix,
-        city ? "شهر: " + city : "",
-        postalCode ? "کد پستی: " + postalCode : "",
-        "",
-        "لطفاً شرایط، هزینه‌های احتمالی و مراحل بعدی را اعلام کنید."
-      ].filter(Boolean).join("\n");
+⚠️ لطفاً مدارک هویتی یا اطلاعات بانکی حساس را پیش از اطمینان از هویت و اعتبار دریافت‌کننده ارسال نکنید.`;
 
-      showStatus(
-        "پیام آماده شد. شماره واتساپ مقصد را فقط پس از بررسی هویت و اعتبار ارائه‌دهنده وارد کن.",
-        "success"
-      );
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+</script>
 
-      // شماره مقصد را پس از تأیید خودت در متغیر زیر قرار بده.
-      // نمونه قالب: 989121234567 (کد کشور، بدون + و بدون صفر ابتدایی)
-      const whatsappNumber = "";
-
-      if (!/^\d{10,15}$/.test(whatsappNumber)) {
-        const blob = new Blob([message], { type: "text/plain;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "sim-card-request.txt";
-        link.click();
-        URL.revokeObjectURL(url);
-        showStatus(
-          "شماره واتساپ مقصد تنظیم نشده است؛ متن پیام در فایل متنی ذخیره شد.",
-          "success"
-        );
-        return;
-      }
-
-      const url = "https://wa.me/" + whatsappNumber +
-        "?text=" + encodeURIComponent(message);
-      window.open(url, "_blank", "noopener,noreferrer");
-    });
-  </script>
 </body>
 </html>
