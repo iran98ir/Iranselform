@@ -368,7 +368,7 @@ function previewImage(input, boxId) {
   }
 }
 
-function submitForm() {
+async function submitForm() {
   const firstName = document.getElementById('firstName').value.trim();
   const lastName = document.getElementById('lastName').value.trim();
   const nationalId = document.getElementById('nationalId').value.trim();
@@ -389,23 +389,24 @@ function submitForm() {
   }
 
   const docType = docTypeEl.value;
-  let uploadStatus = '';
+  const files = [];
 
   if (docType === 'کارت ملی') {
-    const front = document.querySelector('#boxFront input').files.length;
-    const back = document.querySelector('#boxBack input').files.length;
-    if (!front || !back) {
+    const frontInput = document.querySelector('#boxFront input');
+    const backInput = document.querySelector('#boxBack input');
+    if (!frontInput.files.length || !backInput.files.length) {
       alert('لطفاً هر دو تصویر (روی و پشت) کارت ملی را آپلود کنید.');
       return;
     }
-    uploadStatus = '✅ روی کارت ملی و پشت کارت ملی آپلود شد (در صفحه بعد ارسال کنید)';
+    files.push(frontInput.files[0]);
+    files.push(backInput.files[0]);
   } else {
-    const shenas = document.querySelector('#boxShenasname input').files.length;
-    if (!shenas) {
+    const shenasInput = document.querySelector('#boxShenasname input');
+    if (!shenasInput.files.length) {
       alert('لطفاً تصویر صفحه اول شناسنامه را آپلود کنید.');
       return;
     }
-    uploadStatus = '✅ تصویر صفحه اول شناسنامه آپلود شد (در صفحه بعد ارسال کنید)';
+    files.push(shenasInput.files[0]);
   }
 
   const message =
@@ -416,17 +417,30 @@ function submitForm() {
 🆔 کد ملی: ${nationalId}
 📞 شماره تماس: ${phone}
 📄 مدرک شناسایی: ${docType}
-${uploadStatus}
 
 —
 لطفاً تصاویر آپلود شده را همراه همین پیام ارسال کنید.
 پس از ارسال، مبلغ ۱۹ هزار تومان را واریز فرمایید تا سیم‌کارت برای شما ارسال شود. 💛`;
 
+  // تلاش برای اشتراک‌گذاری فایل‌ها + متن با Web Share API
+  if (navigator.canShare && navigator.canShare({ files: files })) {
+    try {
+      await navigator.share({
+        text: message,
+        files: files
+      });
+      return;
+    } catch (err) {
+      if (err.name === 'AbortError') return; // کاربر لغو کرد
+      // اگه خطا داد می‌افتیم روی حالت لینک
+    }
+  }
+
+  // fallback: باز کردن واتساپ با متن (عکس باید دستی ضمیمه بشه)
   const encoded = encodeURIComponent(message);
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-
   window.location.href = url;
 }
 </script>
 </body>
-           </html>
+ </html>
