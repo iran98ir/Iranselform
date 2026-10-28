@@ -78,7 +78,7 @@
     border-right:5px solid #ffd400;
     padding:14px 16px;
     border-radius:12px;
-    font-size:0.95rem;
+    font-size:1rem;
     color:#5c4500;
     margin-bottom:24px;
     display:flex;
@@ -114,7 +114,7 @@
     box-shadow:0 0 0 5px rgba(255,184,0,0.20);
   }
   .field-hint {
-    font-size:0.95rem;
+    font-size:1rem;
     color:#92400e;
     background:#fef3c7;
     padding:10px 14px;
@@ -128,64 +128,107 @@
     border:1.5px solid #fcd34d;
   }
   .field-hint span { font-size:1.2rem; flex-shrink:0; }
+
   .radio-grid {
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:16px;
   }
   .radio-card {
     display:flex;
     align-items:center;
-    gap:16px;
-    padding:16px 18px;
+    gap:18px;
+    padding:18px 20px;
     border:2.5px solid #d1d5db;
     border-radius:14px;
     cursor:pointer;
     transition:all 0.2s;
     background:#f9fafb;
-    font-size:1.3rem;
+    font-size:1.4rem;
     font-weight:800;
   }
   .radio-card:hover { border-color:#ffd400; background:#fff; }
   .radio-card input[type="radio"] {
-    accent-color:#ffb800;
-    width:24px;
-    height:24px;
+    appearance:none;
+    -webkit-appearance:none;
+    width:26px;
+    height:26px;
+    border:2.5px solid #9ca3af;
+    border-radius:50%;
+    background:#fff;
     cursor:pointer;
     flex-shrink:0;
+    position:relative;
+    margin:0;
+    transition:all 0.2s;
+  }
+  .radio-card input[type="radio"]:checked {
+    border-color:#ffb800;
+  }
+  .radio-card input[type="radio"]:checked::after {
+    content:'';
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:13px; height:13px;
+    border-radius:50%;
+    background:#ffb800;
   }
   .radio-card.selected {
     border-color:#ffb800;
     background:#fff8e1;
     border-width:3px;
   }
+
   .checkbox-card {
     display:flex;
     align-items:center;
-    gap:16px;
-    padding:16px;
+    gap:18px;
+    padding:18px;
     border:2.5px solid #d1d5db;
     border-radius:14px;
     cursor:pointer;
     transition:all 0.2s;
     background:#f9fafb;
-    font-size:1.05rem;
+    font-size:1.1rem;
     font-weight:700;
-    line-height:1.6;
+    line-height:1.7;
   }
   .checkbox-card:hover { border-color:#ffd400; background:#fff; }
   .checkbox-card input[type="checkbox"] {
-    accent-color:#ffb800;
-    width:24px;
-    height:24px;
+    appearance:none;
+    -webkit-appearance:none;
+    width:26px;
+    height:26px;
+    border:2.5px solid #9ca3af;
+    border-radius:8px;
+    background:#fff;
     cursor:pointer;
     flex-shrink:0;
+    position:relative;
+    margin:0;
+    transition:all 0.2s;
+  }
+  .checkbox-card input[type="checkbox"]:checked {
+    border-color:#ffb800;
+    background:#ffb800;
+  }
+  .checkbox-card input[type="checkbox"]:checked::after {
+    content:'✓';
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    color:#1a1a1a;
+    font-size:18px;
+    font-weight:900;
+    line-height:1;
   }
   .checkbox-card.checked {
     border-color:#ffb800;
     background:#fff8e1;
     border-width:3px;
   }
+
   .submit-btn {
     width:100%;
     padding:17px;
@@ -205,16 +248,12 @@
     gap:10px;
     box-shadow:0 6px 20px rgba(255,184,0,0.40);
   }
-  .submit-btn svg {
-    width:26px;
-    height:26px;
-    flex-shrink:0;
-  }
+  .submit-btn svg { width:26px; height:26px; flex-shrink:0; }
   .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,184,0,0.55); }
   .submit-btn:active { transform:translateY(0); }
   .convert-note {
     text-align:center;
-    font-size:0.95rem;
+    font-size:1rem;
     color:#4b5563;
     margin-top:16px;
     line-height:1.7;
@@ -225,21 +264,17 @@
     gap:6px;
     flex-wrap:wrap;
   }
-  .convert-note svg {
-    width:20px;
-    height:20px;
-    flex-shrink:0;
-    vertical-align:middle;
-  }
+  .convert-note svg { width:20px; height:20px; flex-shrink:0; vertical-align:middle; }
   .convert-note strong { color:#1a1a1a; font-weight:800; }
   .hidden { display:none !important; }
+
   @media(max-width:420px){
     body { font-size:1.05rem; padding:12px; }
     .hero h1 { font-size:1.6rem; }
     .content { padding:22px 18px 28px; }
     .hero { padding:26px 18px 34px; }
-    .radio-grid { grid-template-columns:1fr 1fr; }
-    .radio-card { font-size:1.2rem; gap:12px; padding:14px; }
+    .radio-card { font-size:1.35rem; gap:16px; padding:16px; }
+    .checkbox-card { font-size:1.05rem; gap:16px; }
   }
 </style>
 </head>
@@ -433,4 +468,4 @@ ${divider}
 }
 </script>
 </body>
-         </html>
+ </html>
